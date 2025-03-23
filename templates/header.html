@@ -1,0 +1,440 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Best Bite</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Include jQuery and Slick JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- External Resources -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
+  <!-- ///////////////////////////////////
+  Internal styles because main.css not editing -->
+  <style>
+    /* Tabs Search */
+    .search-input-box {
+      transform: translate(-50%, -50%);
+      position: relative;
+      top: 50%;
+      left: 50%;
+      width: 40%;
+      margin-bottom: 15px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* search Input Text on Mobile */
+    @media (max-width: 576px) {
+      .search-input-box {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* ------------------------------------------------------------ */
+
+
+    /* Header Logo Text on Mobile */
+    @media (max-width: 576px) {
+      .header .logo h1 {
+        font-size: 16px;
+      }
+    }
+
+    /* ------------------------------------------------------------ */
+
+
+    /* Account and Cart Box (dropdown) */
+    .cart-box,
+    .wishlist-box {
+      width: 350px;
+    }
+
+    .wishlist-head,
+    .wishlist-main,
+    .cart-head,
+    .cart-main,
+    .cart-subtotal-box {
+      border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    }
+
+    .wishlist-add-cart-btn {
+      font-size: 11px;
+    }
+
+    .wishlist-head-text,
+    .cart-head-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--heading-color);
+    }
+
+    .wishlist-head-items-text,
+    .cart-head-items-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+
+    .wishlist-item-title,
+    .cart-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--heading-color);
+    }
+
+    .wishlist-item-price,
+    .cart-item-price,
+    .total-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .total-price-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+
+    .wishlist-view-text,
+    .wishlist-checkout-text,
+    .cart-view-text,
+    .cart-checkout-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+
+    .wishlist-del-icon i,
+    .cart-del-icon i {
+      cursor: pointer;
+      font-style: 8px;
+      color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+
+    .wishlist-del-icon i:hover,
+    .cart-del-icon i:hover {
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+    }
+
+    .wishlist-box,
+    .account-box,
+    .cart-box {
+      max-width: 400px;
+      margin: 0;
+      padding: 20px;
+      background: var(--nav-dropdown-background-color);
+      border-radius: 4px;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+      display: block;
+
+      position: absolute;
+      right: 0;
+      top: 200%;
+
+      visibility: hidden;
+      opacity: 0;
+      z-index: 99;
+
+      transition: 0.3s;
+    }
+
+    /* Only Show CART and WISHLIST on Tablet-Above Tab Devices */
+    @media screen and (min-width: 768px) {
+
+      /* Cart Box Show */
+      .cart-dropdown:hover .cart-box {
+        top: 160%;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Wishlist Box Show */
+      .wishlist-dropdown:hover .wishlist-box {
+        top: 160%;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    /* Account Box Show */
+    .account-dropdown:hover .account-box {
+      top: 160%;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* ------------------------------------------------------------ */
+
+    .sticky-tabs {
+      position: sticky;
+      top: 90px;
+
+      background-color: white;
+      padding: 10px 0;
+      z-index: 996;
+    }
+
+    @media (max-width: 1024px) {
+      .sticky-tabs {
+        top: 76px;
+      }
+    }
+
+    /* ------------------------------------------------------------ */
+
+    .menu-item {
+      text-align-last: left !important;
+    }
+
+    .menu-img {
+      width: 130px;
+      height: 130px;
+    }
+
+    .menu .tab-content .menu-item .menu-img {
+      padding: 16px 0 0 16px !important;
+      margin: 0 !important;
+    }
+
+    @media (max-width: 380px) {
+      .menu-img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .menu-cart-btn {
+        font-size: 12px;
+      }
+    }
+
+    /* ------------------------------------------------------------ */
+
+    /* Chefs Carousel */
+    .member-img img {
+      height: 247px !important;
+      width: 100%;
+    }
+
+    .chefs .swiper-wrapper {
+      height: 450px;
+      /* height: max-content; */
+    }
+
+    .chefs .swiper-pagination {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .chefs .swiper-pagination .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+      opacity: 1;
+    }
+
+    .chefs .swiper-pagination .swiper-pagination-bullet-active {
+      background-color: var(--accent-color);
+    }
+  </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="" class="logo d-flex align-items-center me-auto me-xl-0 order-2 order-xl-1">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="{% static '/assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Best Bite</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu order-1 order-xl-2">
+        <ul>
+          <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#chefs">Chefs</a></li>
+          <li><a href="#book-a-table">Book Now</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+
+
+
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- //////////////////////////////// Ahmar Frontend starts -->
+      <div class="functional-btns d-flex justify-content-between align-items-center column-gap-3 order-3 order-xl-3">
+
+        <!-- wishlist dropdown -->
+        <div class="wishlist-dropdown position-relative">
+          <a class="d-flex align-items-center justify-content-between" href="">
+            <i class="fa-regular fa-heart position-relative" style="font-size: 18px; margin-right: 8px;">
+              <div
+                class="wishlist-num d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle bg-danger text-light rounded-circle p-1"
+                style="width: 18px; height: 18px; font-size: 10px;">
+                12
+              </div>
+            </i>
+            <p class="m-0 mt-1" style="font-size: 13px;">Wishlist</p>
+          </a>
+
+          <div class="wishlist-box">
+            <div class="wishlist-head pb-4">
+              <p class="m-0"><span class="wishlist-head-text me-2">Your Wishlist</span><span
+                  class="wishlist-head-items-text">(1
+                  Item in
+                  wishlist)</span></p>
+            </div>
+
+            <ul class="wishlist-main p-0 py-2 m-0">
+              <li class="d-flex align-items-start column-gap-3">
+                <img class="wishlist-img" width="60px" height="60px" src="{% static 'assets/img/menu/menu-item-1.png' %}"
+                  alt="wishlist-image" />
+                <div class="wishlist-content">
+                  <p class="wishlist-item-title mb-2">Crown Pizza (Juicy Lava etc) This is Title can be alrge text</p>
+                  <button class="wishlist-add-cart-btn btn btn-danger">
+                    <i class="bi bi-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
+                <span class="wishlist-del-icon"><i class="fa-solid fa-x"></i></span>
+              </li>
+            </ul>
+
+            <div class="wishlist-footer pt-3 text-center">
+              <a class="wishlist-checkout-text" href="">GO TO WISHLIST</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- cart dropdown -->
+        <div class="cart-dropdown position-relative">
+          <a class="d-flex align-items-center justify-content-between" href="">
+            <i class="fa-solid fa-cart-shopping position-relative" style="font-size: 18px; margin-right: 8px;">
+              <div
+                class="wishlist-num d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle bg-danger text-light rounded-circle p-1"
+                style="width: 18px; height: 18px; font-size: 10px;">
+                1
+              </div>
+            </i>
+            <p class="m-0 mt-1" style="font-size: 13px;">Cart</p>
+          </a>
+
+          <div class="cart-box">
+            <div class="cart-head pb-4">
+              <p class="m-0"><span class="cart-head-text me-2">Your Cart</span><span class="cart-head-items-text">(1
+                  Item in cart)</span></p>
+            </div>
+
+            <ul class="cart-main p-0 py-2 m-0">
+              <li class="d-flex align-items-start column-gap-3">
+                <img class="cart-img" width="60px" height="60px" src="{% static 'assets/img/menu/menu-item-1.png' %}"
+                  alt="cart-image" />
+                <div class="cart-content">
+                  <p class="cart-item-title mb-2">Crown Pizza (Juicy Lava etc) This is Title can be alrge text</p>
+                  <p class="cart-item-price m-0">$25</p>
+                </div>
+                <span class="cart-del-icon"><i class="fa-solid fa-x"></i></span>
+              </li>
+            </ul>
+
+            <div class="cart-subtotal-box py-2">
+              <div class="d-flex justify-content-between">
+                <p class="total-price-title">Subtotal</p>
+                <p class="total-price">$50</p>
+              </div>
+              <a class="cart-view-text" href="">View cart</a>
+            </div>
+
+            <div class="cart-footer pt-2 text-center">
+              <a class="cart-checkout-text" href="">CHECKOUT</a>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- account dropdown -->
+        <div class="account-dropdown position-relative">
+          <a class="btn-getstarted me-0 fs-6">
+            <!-- <i class="fas fa-user"></i> -->
+            Account
+          </a>
+          <div class="account-box">
+            {% if user.is_authenticated %}
+            <div class="login d-flex justify-content-between align-items-center column-gap-2">
+              <a class="btn-getstarted" href="{% url 'logout' %}" style="margin: 0px;">Logout</a>
+              <a class="btn-getstarted" href="" style="display: inline-flex; align-items: center;">
+                <i class="fas fa-user" style="margin-right: 8px;"></i> {{ user.username | capfirst }}
+
+              </a>
+              {% else %}
+              <div class="login d-flex justify-content-between align-items-center column-gap-2">
+                <a class="btn-getstarted" href="{% url 'login' %}" style="margin: 0px;">Login</a>
+                <a class="btn-getstarted" href="{% url 'register' %}" style="margin: 0px;">Register</a>
+               
+                
+                
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+   
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,291 @@
+<section id="menu" class="menu section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Menu</h2>
+    <p><span>Check Our</span> <span class="description-title">Best Bite Menu</span></p>
+  </div>
+
+  <div class="container">
+    <!-- Search -->
+    <form action="#search" method="GET">
+      <div class="search-input-box input-group text-center" id="search">
+        <span class="input-group-text bg-transparent rounded-0 border-0 border-bottom border-danger-subtle"
+          id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input class="search-input form-control rounded-0 border-0 border-bottom border-danger-subtle"
+          type="search" name="search" placeholder="search here">
+      </div>
+    </form>
+    <script>
+      // Check if the page URL has #search
+      window.onload = function() {
+        if (window.location.hash === '#search') {
+          const searchInput = document.getElementById('search');
+          if (searchInput) {
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      };
+    </script>
+    
+  {% if f_search %}
+    <div class="search-results mt-4">
+        <h3>Search Results:</h3>
+        <div class="row gy-5 align-items-center justify-content-center">
+            {% for item in f_search %}
+            <div class="col-lg-4">
+                <div class="card menu-item flex-row">
+                    <img style="width: 200px; height: 200px;" src="{{ item.img.url }}" class="card-img-top menu-img img-fluid" alt="{{ item.food_name }}">
+                    <div class="card-body text-start">
+                        <h4 class="card-title">{{ item.food_name }}</h4>
+                        <p class="card-text ingredients">{{ item.decription | safe }}</p>
+                        <p class="price">Rs {{ item.price }}</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn btn-danger menu-cart-btn">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+    <!-- Tabs Navigation -->
+    <ul id="menu-tabs" class="sticky-tabs nav nav-tabs d-flex justify-content-center flex-no-wrap row-gap-2"
+      data-aos="fade-up" data-aos-delay="100">
+      {% for i in section %}
+      <li class="nav-item">
+        <a class="nav-link {% if forloop.first %}active show{% endif %}" data-bs-toggle="tab"
+          href="#menu-{{ i.name|slugify }}">
+          <h4>{{ i.name }}</h4>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+      {% for i in section %}
+      <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="menu-{{ i.name|slugify }}">
+
+        <div class="tab-header text-center">
+          <p>Menu</p>
+          <h3>{{ i.name }}</h3>
+        </div>
+
+        <div class="row gy-5 align-items-center justify-content-center">
+          <!-- Display items belonging to the current section -->
+          {% for y in food %}
+          {% if y.sec_name == i %}
+          <div class="col-lg-4">
+            <div class="card menu-item flex-row">
+              <img style="width: 200px; height: 200px;" src="{{ y.img.url }}" class="card-img-top menu-img img-fluid" alt="{{ y.food_name }}">
+              <div class="card-body text-start">
+                <h4 class="card-title">{{ y.food_name }}</h4>
+                <p class="card-text ingredients">{{ y.decription | safe }}</p>
+                <p class="price">Rs {{ y.price }}</p>
+                <div class="d-flex justify-content-between mt-3">
+                  <!-- Add to Cart Button -->
+                  <button class="btn btn-danger menu-cart-btn">
+                    <i class="bi bi-cart-plus"></i> Add to Cart
+                  </button>
+                  <!-- Favorite Button -->
+                  <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div><!-- Menu Item -->
+          {% endif %}
+          {% empty %}
+          <p>No items available in this section.</p>
+          {% endfor %}
+        </div>
+
+      </div><!-- End Section Tab Content -->
+      {% endfor %}
+
+      <!-- Heart Filled State Logic -->
+      <script>
+        let heartIcon = document.querySelectorAll(".heart-btn");
+        heartIcon.forEach((heart) => {
+          heart.addEventListener("click", function (e) {
+            let targeted = e.target.closest(".heart-btn");
+            if (targeted.innerHTML.includes('fa-solid')) {
+              targeted.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            } else {
+              targeted.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            }
+          });
+        });
+        
+      </script>
+     
+      
+    </div>
+  </div>
+</section>
+
+
+
+  
+  def index(request):
+  section = Section.objects.all()
+  food = Food.objects.all()
+  f_search = None
+  if request.method =="GET":
+      st = request.GET.get('search')
+      if st != None:
+          f_search = Food.objects.filter(food_name__icontains = st)
+
+
+  data = {
+      'section':section,
+      'food':food,
+      'f_search':f_search,
+  }
+
+
+
+  return render (request,'index.html',data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+<div class="tabs-container">
+  <button class="arrow-btn" onclick="scrollTabs(-1)">&#9664;</button> <!-- Left Arrow -->
+  <ul id="menu-tabs" class="nav nav-tabs d-flex flex-nowrap">
+    {% for i in section %}
+    <li class="nav-item">
+      <a class="nav-link {% if forloop.first %}active show{% endif %}" data-bs-toggle="tab" href="#menu-{{ i.name|slugify }}">
+        <h4>{{ i.name }}</h4>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <button class="arrow-btn" onclick="scrollTabs(1)">&#9654;</button> <!-- Right Arrow -->
+</div>
+
+<script>
+  function scrollTabs(direction) {
+  const container = document.getElementById('menu-tabs');
+  const scrollAmount = 200;  // Adjust as needed
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+</script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .tabs-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#menu-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.nav-item {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.arrow-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.arrow-btn:hover {
+  background-color: #0056b3;
+}
+
+</style>
