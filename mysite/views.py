@@ -8,9 +8,10 @@ from django.db.models import Q
 from party.models import Party
 from professional_chef.models import Professional_Chef
 from birthday_table.models import Birthday_table
-
+from gallery.models import Gallery
 def index(request):
     section = Section.objects.all()
+    gallery = Gallery.objects.all()
     food = Food.objects.all()
     f_search = None
     if request.method == "GET":
@@ -31,6 +32,8 @@ def index(request):
         'f_search': f_search,
         'party':party,
         'professional_chef':professional_chef,
+        'gallery':gallery,
+
     }
 
     return render(request, 'index.html', data)

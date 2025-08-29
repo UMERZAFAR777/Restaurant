@@ -11,16 +11,21 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+# from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+from decouple import config
+
+SECRET_KEY = config('SECRET_KEY')   # ✔️ string key deni hai
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@d1s74893l%gvfkkd+dfr8s5#f1zjeq6903s&q@*d5s(zs^xsn'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +48,13 @@ INSTALLED_APPS = [
     'party',
     'professional_chef',
     'birthday_table',
+    'allauth',
+    'allauth.account',
+
+    # Optional -- requires install using `django-allauth[socialaccount]`.
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'gallery'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -68,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -196,3 +210,27 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+ 
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+  
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+   
+        'APP': {
+            'client_id': config('client_id'),
+            'secret': config('secret'),
+            'key': ''
+        }
+    }
+}
+
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+LOGIN_REDIRECT_URL = 'index'

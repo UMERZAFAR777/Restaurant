@@ -4,264 +4,280 @@
 {% block content %}
 <style>
   .event-item {
-  width: 100%;
-  height: 300px; /* Adjust height as needed */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 10px; /* Optional: For rounded corners */
-  overflow: hidden; /* Prevent overflow */
-}
+    width: 100%;
+    height: 300px;
+    /* Adjust height as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    /* Optional: For rounded corners */
+    overflow: hidden;
+    /* Prevent overflow */
+  }
 
 
   .tabs-container {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
 
-#menu-tabs {
-  display: flex;
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  white-space: nowrap;
-  padding: 0;
-  margin: 0;
-}
+  #menu-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+  }
 
-#menu-tabs::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
+  #menu-tabs::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+  }
 
-.nav-item {
-  list-style: none;
-  margin: 0 10px;
-}
+  .nav-item {
+    list-style: none;
+    margin: 0 10px;
+  }
 
-.nav-link {
-  display: block;
-  padding: 10px 15px;
-  background-color: #f8f9fa;
-  color: #333;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: 0.3s;
-}
+  .nav-link {
+    display: block;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
 
-.nav-link.active {
-  background-color: #007bff;
-  color: white;
-}
+  .nav-link.active {
+    background-color: #007bff;
+    color: white;
+  }
 
-.nav-link:hover {
-  background-color: #007bff;
-  color: white;
-}
+  .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+  }
 
-.arrow-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-  margin: 0 5px;
-  transition: 0.3s;
-}
+  .arrow-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: 0.3s;
+  }
 
-.arrow-btn:hover {
-  background-color: #0056b3;
-}
-
+  .arrow-btn:hover {
+    background-color: #0056b3;
+  }
 </style>
-    <main class="main">
-  
-      <!-- Hero Section -->
-      <section id="hero" class="hero section light-background">
-  
-        <div class="container">
-          <div class="row gy-4 justify-content-center justify-content-lg-between">
-            <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-              <h1 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h1>
-              <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites with Bootstrap</p>
-              <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                <a href="#book-a-table" class="btn-get-started">Booka a Table</a>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-              </div>
-            </div>
-            <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-              <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
-            </div>
+<main class="main">
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero section light-background">
+
+    <div class="container">
+      <div class="row gy-4 justify-content-center justify-content-lg-between">
+        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h1>
+          <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites with Bootstrap
+          </p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#book-a-table" class="btn-get-started">Booka a Table</a>
+            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+              class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
+                Video</span></a>
           </div>
         </div>
-  
-      </section><!-- /Hero Section -->
-  
-      <!-- About Section -->
-      <section id="about" class="about section">
-  
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>About Us<br></h2>
-          <p><span>Learn More</span> <span class="description-title">About Us</span></p>
-        </div><!-- End Section Title -->
-  
-        <div class="container">
-  
-          <div class="row gy-4">
-            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-              <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid mb-4" alt="">
-              <div class="book-a-table">
-                <h3>Book a Table</h3>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div>
-            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
-              <div class="content ps-0 ps-lg-5">
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-                </p>
-  
-               
-              </div>
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+          <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /Hero Section -->
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>About Us<br></h2>
+      <p><span>Learn More</span> <span class="description-title">About Us</span></p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4">
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+          <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid mb-4" alt="">
+          <div class="book-a-table">
+            <h3>Book a Table</h3>
+            <p>+1 5589 55488 55</p>
+          </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+          <div class="content ps-0 ps-lg-5">
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit in voluptate
+                  velit.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
+                  nulla pariatur.</span></li>
+            </ul>
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+              voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /About Section -->
+
+  <!-- Why Us Section -->
+  <section id="why-us" class="why-us section light-background">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-box">
+            <h3>Why Choose Yummy</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+            </p>
+            <div class="text-center">
+              <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
             </div>
           </div>
-  
+        </div><!-- End Why Box -->
+
+        <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-xl-4">
+              <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-clipboard-data"></i>
+                <h4>Corporis voluptates officia eiusmod</h4>
+                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+              </div>
+            </div><!-- End Icon Box -->
+
+            <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-gem"></i>
+                <h4>Ullamco laboris ladore lore pan</h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+              </div>
+            </div><!-- End Icon Box -->
+
+            <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-inboxes"></i>
+                <h4>Labore consequatur incidid dolore</h4>
+                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+              </div>
+            </div><!-- End Icon Box -->
+
+          </div>
         </div>
-  
-      </section><!-- /About Section -->
-  
-      <!-- Why Us Section -->
-      <section id="why-us" class="why-us section light-background">
-  
-        <div class="container">
-  
-          <div class="row gy-4">
-  
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="why-box">
-                <h3>Why Choose Yummy</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                  Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-                </p>
-                <div class="text-center">
-                  <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Why Us Section -->
+
+
+
+  <section id="menu" class="menu section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Our Menu</h2>
+      <p><span>Check Our</span> <span class="description-title">Best Bite Menu</span></p>
+    </div>
+
+    <div class="container">
+      <!-- Search -->
+      <form action="#search" method="GET">
+        <div class="search-input-box input-group text-center" id="search">
+          <span class="input-group-text bg-transparent rounded-0 border-0 border-bottom border-danger-subtle"
+            id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input class="search-input form-control rounded-0 border-0 border-bottom border-danger-subtle" type="search"
+            name="search" placeholder="search here">
+        </div>
+      </form>
+      <script>
+        // Check if the page URL has #search
+        window.onload = function () {
+          if (window.location.hash === '#search') {
+            const searchInput = document.getElementById('search');
+            if (searchInput) {
+              searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        };
+      </script>
+
+      {% if f_search %}
+      <div class="search-results mt-4">
+        <h3>Search Results:</h3>
+        <div class="row gy-5 align-items-center justify-content-center">
+          {% for item in f_search %}
+          <div class="col-lg-4">
+            <div class="card menu-item flex-row">
+              <img style="width: 200px; height: 200px;" src="{{ item.img.url }}" class="card-img-top menu-img img-fluid"
+                alt="{{ item.food_name }}">
+              <div class="card-body text-start">
+                <h4 class="card-title">{{ item.food_name }}</h4>
+                <p class="card-text ingredients">{{ item.decription | safe }}</p>
+                <p class="price">Rs {{ item.price }}</p>
+                <div class="d-flex justify-content-between mt-3">
+                  <button class="btn btn-danger menu-cart-btn">
+                    <i class="bi bi-cart-plus"></i> Add to Cart
+                  </button>
+                  <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
                 </div>
               </div>
-            </div><!-- End Why Box -->
-  
-            <div class="col-lg-8 d-flex align-items-stretch">
-              <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-  
-                <div class="col-xl-4">
-                  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                    <i class="bi bi-clipboard-data"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                  </div>
-                </div><!-- End Icon Box -->
-  
-                <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                    <i class="bi bi-gem"></i>
-                    <h4>Ullamco laboris ladore lore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                  </div>
-                </div><!-- End Icon Box -->
-  
-                <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                    <i class="bi bi-inboxes"></i>
-                    <h4>Labore consequatur incidid dolore</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                  </div>
-                </div><!-- End Icon Box -->
-  
-              </div>
             </div>
-  
           </div>
-  
+          {% endfor %}
         </div>
-  
-      </section><!-- /Why Us Section -->
-  
-     
-  
-      <section id="menu" class="menu section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Our Menu</h2>
-          <p><span>Check Our</span> <span class="description-title">Best Bite Menu</span></p>
-        </div>
-      
-        <div class="container">
-          <!-- Search -->
-          <form action="#search" method="GET">
-            <div class="search-input-box input-group text-center" id="search">
-              <span class="input-group-text bg-transparent rounded-0 border-0 border-bottom border-danger-subtle"
-                id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
-              <input class="search-input form-control rounded-0 border-0 border-bottom border-danger-subtle"
-                type="search" name="search" placeholder="search here">
-            </div>
-          </form>
-          <script>
-            // Check if the page URL has #search
-            window.onload = function() {
-              if (window.location.hash === '#search') {
-                const searchInput = document.getElementById('search');
-                if (searchInput) {
-                  searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }
-            };
-          </script>
-          
-        {% if f_search %}
-          <div class="search-results mt-4">
-              <h3>Search Results:</h3>
-              <div class="row gy-5 align-items-center justify-content-center">
-                  {% for item in f_search %}
-                  <div class="col-lg-4">
-                      <div class="card menu-item flex-row">
-                          <img style="width: 200px; height: 200px;" src="{{ item.img.url }}" class="card-img-top menu-img img-fluid" alt="{{ item.food_name }}">
-                          <div class="card-body text-start">
-                              <h4 class="card-title">{{ item.food_name }}</h4>
-                              <p class="card-text ingredients">{{ item.decription | safe }}</p>
-                              <p class="price">Rs {{ item.price }}</p>
-                              <div class="d-flex justify-content-between mt-3">
-                                  <button class="btn btn-danger menu-cart-btn">
-                                      <i class="bi bi-cart-plus"></i> Add to Cart
-                                  </button>
-                                  <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
-                                      <i class="fa-regular fa-heart"></i>
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  {% endfor %}
-              </div>
-          </div>
+      </div>
       {% endif %}
-      
-        
-          <!-- <ul id="menu-tabs" class="sticky-tabs nav nav-tabs d-flex justify-content-center flex-no-wrap row-gap-2"
+
+
+      <!-- <ul id="menu-tabs" class="sticky-tabs nav nav-tabs d-flex justify-content-center flex-no-wrap row-gap-2"
             data-aos="fade-up" data-aos-delay="100">
             {% for i in section %}
             <li class="nav-item">
@@ -273,115 +289,117 @@
             {% endfor %}
           </ul> -->
 
-          <!-- Tabs Navigation -->
+      <!-- Tabs Navigation -->
 
-          
-<div class="tabs-container">
-  <button class="arrow-btn" onclick="scrollTabs(-1)">&#9664;</button> <!-- Left Arrow -->
-  <ul id="menu-tabs" class="nav nav-tabs d-flex flex-nowrap">
-    {% for i in section %}
-    <li class="nav-item">
-      <a class="nav-link {% if forloop.first %}active show{% endif %}" data-bs-toggle="tab" href="#menu-{{ i.name|slugify }}">
-        <h4>{{ i.name }}</h4>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-  <button class="arrow-btn" onclick="scrollTabs(1)">&#9654;</button> <!-- Right Arrow -->
-</div>
 
-<script>
-  function scrollTabs(direction) {
-  const container = document.getElementById('menu-tabs');
-  const scrollAmount = 200;  // Adjust as needed
-  container.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
+      <div class="tabs-container">
+        <button class="arrow-btn" onclick="scrollTabs(-1)">&#9664;</button> <!-- Left Arrow -->
+        <ul id="menu-tabs" class="nav nav-tabs d-flex flex-nowrap">
+          {% for i in section %}
+          <li class="nav-item">
+            <a class="nav-link {% if forloop.first %}active show{% endif %}" data-bs-toggle="tab"
+              href="#menu-{{ i.name|slugify }}">
+              <h4>{{ i.name }}</h4>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <button class="arrow-btn" onclick="scrollTabs(1)">&#9654;</button> <!-- Right Arrow -->
+      </div>
 
-</script>
-      
-          <!-- Tab Content -->
-          <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-            {% for i in section %}
-            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="menu-{{ i.name|slugify }}">
-      
-              <div class="tab-header text-center">
-                <p>Menu</p>
-                <h3>{{ i.name }}</h3>
-              </div>
-      
-              <div class="row gy-5 align-items-center justify-content-center">
-                <!-- Display items belonging to the current section -->
-                {% for y in food %}
-                {% if y.sec_name == i %}
-                <div class="col-lg-4">
-                  <div class="card menu-item flex-row">
-                    <img style="width: 200px; height: 200px;" src="{{ y.img.url }}" class="card-img-top menu-img img-fluid" alt="{{ y.food_name }}">
-                    <div class="card-body text-start">
-                      <h4 class="card-title">{{ y.food_name }}</h4>
-                      <p class="card-text ingredients">{{ y.decription | safe }}</p>
-                      <p class="price">Rs {{ y.price }}</p>
-                      <div class="d-flex justify-content-between mt-3">
-                        <!-- Add to Cart Button -->
-                        <button class="btn btn-danger menu-cart-btn">
-                          <i class="bi bi-cart-plus"></i> Add to Cart
-                        </button>
-                        <!-- Favorite Button -->
-                        <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
-                          <i class="fa-regular fa-heart"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- Menu Item -->
-                {% endif %}
-                {% empty %}
-                <p>No items available in this section.</p>
-                {% endfor %}
-              </div>
-      
-            </div><!-- End Section Tab Content -->
-            {% endfor %}
-      
-            <!-- Heart Filled State Logic -->
-            <script>
-              let heartIcon = document.querySelectorAll(".heart-btn");
-              heartIcon.forEach((heart) => {
-                heart.addEventListener("click", function (e) {
-                  let targeted = e.target.closest(".heart-btn");
-                  if (targeted.innerHTML.includes('fa-solid')) {
-                    targeted.innerHTML = '<i class="fa-regular fa-heart"></i>';
-                  } else {
-                    targeted.innerHTML = '<i class="fa-solid fa-heart"></i>';
-                  }
-                });
-              });
-              
-            </script>
-           
-            
+      <script>
+        function scrollTabs(direction) {
+          const container = document.getElementById('menu-tabs');
+          const scrollAmount = 200;  // Adjust as needed
+          container.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+
+      </script>
+
+      <!-- Tab Content -->
+      <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+        {% for i in section %}
+        <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="menu-{{ i.name|slugify }}">
+
+          <div class="tab-header text-center">
+            <p>Menu</p>
+            <h3>{{ i.name }}</h3>
           </div>
-        </div>
-      </section>
-    
-    
-    
-    
-    
+
+          <div class="row gy-5 align-items-center justify-content-center">
+            <!-- Display items belonging to the current section -->
+            {% for y in food %}
+            {% if y.sec_name == i %}
+            <div class="col-lg-4">
+              <div class="card menu-item flex-row">
+                <img style="width: 200px; height: 200px;" src="{{ y.img.url }}" class="card-img-top menu-img img-fluid"
+                  alt="{{ y.food_name }}">
+                <div class="card-body text-start">
+                  <h4 class="card-title">{{ y.food_name }}</h4>
+                  <p class="card-text ingredients">{{ y.decription | safe }}</p>
+                  <p class="price">Rs {{ y.price }}</p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <!-- Add to Cart Button -->
+                    <button class="btn btn-danger menu-cart-btn">
+                      <i class="bi bi-cart-plus"></i> Add to Cart
+                    </button>
+                    <!-- Favorite Button -->
+                    <button class="heart-btn btn btn-outline-danger" title="Add to Favorites">
+                      <i class="fa-regular fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Menu Item -->
+            {% endif %}
+            {% empty %}
+            <p>No items available in this section.</p>
+            {% endfor %}
+          </div>
+
+        </div><!-- End Section Tab Content -->
+        {% endfor %}
+
+        <!-- Heart Filled State Logic -->
+        <script>
+          let heartIcon = document.querySelectorAll(".heart-btn");
+          heartIcon.forEach((heart) => {
+            heart.addEventListener("click", function (e) {
+              let targeted = e.target.closest(".heart-btn");
+              if (targeted.innerHTML.includes('fa-solid')) {
+                targeted.innerHTML = '<i class="fa-regular fa-heart"></i>';
+              } else {
+                targeted.innerHTML = '<i class="fa-solid fa-heart"></i>';
+              }
+            });
+          });
+
+        </script>
 
 
-  
-    
-  
-      <!-- Events Section -->
-      <section id="events" class="events section">
-  
-        <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-  
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <!-- Events Section -->
+  <section id="events" class="events section">
+
+    <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="swiper init-swiper">
+        <script type="application/json" class="swiper-config">
               {
                 "loop": true,
                 "speed": 600,
@@ -406,171 +424,184 @@
                 }
               }
             </script>
-            <div class="swiper-wrapper">
-              
-              {% for i in party %}
-              <div class="swiper-slide event-item d-flex flex-column justify-content-end"
-                style="background-image: url('{{ i.img.url }}');">
-                <h3>{{ i.party_name }}</h3>
-                <p class="description">
-                  {{ i.description | safe }}
-                </p>
-              </div>
-            {% endfor %}
-            
-            </div>
-            <div class="swiper-pagination"></div>
+        <div class="swiper-wrapper">
+
+          {% for i in party %}
+          <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+            style="background-image: url('{{ i.img.url }}');">
+            <h3>{{ i.party_name }}</h3>
+            <p class="description">
+              {{ i.description | safe }}
+            </p>
           </div>
-  
+          {% endfor %}
+
         </div>
-  
-      </section><!-- /Events Section -->
-  
+        <div class="swiper-pagination"></div>
+      </div>
 
-<!-- Include Slick CSS and JS -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    </div>
 
-<section id="chefs" class="chefs section">
+  </section><!-- /Events Section -->
+
+
+  <!-- Include Slick CSS and JS -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+  <section id="chefs" class="chefs section">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>chefs</h2>
-        <p><span>Our</span> <span class="description-title">Professional Chefs</span></p>
+      <h2>chefs</h2>
+      <p><span>Our</span> <span class="description-title">Professional Chefs</span></p>
     </div>
 
     <div class="container">
-        <!-- Slider Container -->
-        <div class="chef-slider row gx-3"> <!-- 'gx-3' Bootstrap spacing for gap -->
-            {% for i in professional_chef %}
-            <div class="col-lg-4 d-flex align-items-stretch">
-                <div class="team-member" style="margin-bottom: 15px;"> <!-- Bottom margin for spacing -->
-                    <div class="member-img">
-                        <img src="{{ i.img.url }}" class="img-fluid chef-img" alt="">
-                    </div>
-                    <div class="member-info">
-                        <h4>{{ i.name }}</h4>
-                        <span>{{ i.title }}</span>
-                        <p>{{ i.description | safe }}</p>
-                    </div>
-                </div>
+      <!-- Slider Container -->
+      <div class="chef-slider row gx-3"> <!-- 'gx-3' Bootstrap spacing for gap -->
+        {% for i in professional_chef %}
+        <div class="col-lg-4 d-flex align-items-stretch">
+          <div class="team-member" style="margin-bottom: 15px;"> <!-- Bottom margin for spacing -->
+            <div class="member-img">
+              <img src="{{ i.img.url }}" class="img-fluid chef-img" alt="">
             </div>
-            {% endfor %}
+            <div class="member-info">
+              <h4>{{ i.name }}</h4>
+              <span>{{ i.title }}</span>
+              <p>{{ i.description | safe }}</p>
+            </div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
+  </section>
 
 
 
-<!-- Slick Slider Initialization -->
-<script>
-    $(document).ready(function(){
-        $('.chef-slider').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: true,
-            dots: true,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
+  <!-- Slick Slider Initialization -->
+  <script>
+    $(document).ready(function () {
+      $('.chef-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: true,
+        dots: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
     });
-</script>
+  </script>
 
 
-  
-    <!-- Book A Table Section -->
-<section id="book-a-table" class="book-a-table section">
 
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up" style="margin-bottom: 30px; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 10px; color: #333;">Book Your</h2>
-    <p style="font-size: 1.2em; color: #555;">
-      <span></span> <span style="font-weight: bold; color: #E44D26;">Birthday Party Table</span>
-    </p>
-  </div><!-- End Section Title -->
-  {% if messages %}
+  <!-- Book A Table Section -->
+  <section id="book-a-table" class="book-a-table section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up" style="margin-bottom: 30px; text-align: center;">
+      <h2 style="font-size: 2.5em; margin-bottom: 10px; color: #333;">Book Your</h2>
+      <p style="font-size: 1.2em; color: #555;">
+        <span></span> <span style="font-weight: bold; color: #E44D26;">Birthday Party Table</span>
+      </p>
+    </div><!-- End Section Title -->
+    {% if messages %}
     {% for message in messages %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <strong>{{message}}.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endfor %}
-{% endif %}
-  <div class="container">
-    <div class="row g-0" data-aos="fade-up" data-aos-delay="100" style="background-color: #f7f7f7; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
-      
-      <!-- Left Image -->
-      <div class="col-lg-4 reservation-img" style="background-image: url({% static 'assets/img/reservation.jpg' %}); background-size: cover; background-position: center; min-height: 400px;"></div>
+    {% endif %}
+    <div class="container">
+      <div class="row g-0" data-aos="fade-up" data-aos-delay="100"
+        style="background-color: #f7f7f7; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
 
-      <!-- Form Area -->
-      <div class="col-lg-8 d-flex align-items-center reservation-form-bg" style="padding: 30px;">
-        <form action="{% url 'book_table' %}" method="post" role="form" style="width: 100%;">
+        <!-- Left Image -->
+        <div class="col-lg-4 reservation-img"
+          style="background-image: url({% static 'assets/img/reservation.jpg' %}); background-size: cover; background-position: center; min-height: 400px;">
+        </div>
 
-          {% csrf_token %}
-          <div class="row gy-4">
-            <div class="col-lg-4 col-md-6">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="date" name="date" class="form-control" id="date" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="time" class="form-control" name="time" id="time" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="number" class="form-control" name="people" id="people" placeholder="# of People" required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="4" placeholder="Message (Optional)" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;"></textarea>
-          </div>
-          <div class="text-center mt-4">
-            <button type="submit" style="background-color: #E44D26; color: white; padding: 10px 30px; border: none; border-radius: 20px; cursor: pointer; transition: 0.3s;">
-              Book a Table
-            </button>
-          </div>
-        </form>
-      </div><!-- End Reservation Form -->
+        <!-- Form Area -->
+        <div class="col-lg-8 d-flex align-items-center reservation-form-bg" style="padding: 30px;">
+          <form action="{% url 'book_table' %}" method="POST" role="form" style="width: 100%;">
 
+            {% csrf_token %}
+            <div class="row gy-4">
+              <div class="col-lg-4 col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required=""
+                  style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required=""
+                  style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required=""
+                  style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="date" name="date" class="form-control" id="date" required=""
+                  style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="time" class="form-control" name="time" id="time" required=""
+                  style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="number" class="form-control" name="people" id="people" placeholder="# of People"
+                  required="" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="4" placeholder="Message (Optional)"
+                style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;"></textarea>
+            </div>
+            <div class="text-center mt-4">
+              <button type="submit"
+                style="background-color: #E44D26; color: white; padding: 10px 30px; border: none; border-radius: 20px; cursor: pointer; transition: 0.3s;">
+                Book a Table
+              </button>
+            </div>
+          </form>
+        </div><!-- End Reservation Form -->
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-  
-      <!-- Gallery Section -->
-      <section id="gallery" class="gallery section light-background">
-  
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Gallery</h2>
-          <p><span>Check</span> <span class="description-title">Our Gallery</span></p>
-        </div><!-- End Section Title -->
-  
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-  
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery section light-background">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Gallery</h2>
+      <p><span>Check</span> <span class="description-title">Our Gallery</span></p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="swiper init-swiper">
+        <script type="application/json" class="swiper-config">
               {
                 "loop": true,
                 "speed": 600,
@@ -600,120 +631,121 @@
                 }
               }
             </script>
-            <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-1.jpg"><img src="{% static 'assets/img/gallery/gallery-1.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-2.jpg"><img src="{% static 'assets/img/gallery/gallery-2.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-3.jpg"><img src="{% static 'assets/img/gallery/gallery-3.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-4.jpg"><img src="{% static 'assets/img/gallery/gallery-4.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-5.jpg"><img src="{% static 'assets/img/gallery/gallery-5.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-6.jpg"><img src="{% static 'assets/img/gallery/gallery-6.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-7.jpg"><img src="{% static 'assets/img/gallery/gallery-7.jpg' %}" class="img-fluid" alt=""></a></div>
-              <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-8.jpg"><img src="{% static 'assets/img/gallery/gallery-8.jpg' %}" class="img-fluid" alt=""></a></div>
-            </div>
-            <div class="swiper-pagination"></div>
+        <div class="swiper-wrapper align-items-center">
+          {% for i in gallery %}
+          <div class="swiper-slide">
+            <a class="glightbox" data-gallery="images-gallery" href="{{ i.pic.url }}">
+              <img src="{{ i.pic.url }}" class="img-fluid" alt="{{ i.name }}">
+            </a>
           </div>
-  
+          {% endfor %}
+
+
         </div>
-  
-      </section><!-- /Gallery Section -->
-  
-      <!-- Contact Section -->
-      <section id="contact" class="contact section">
-  
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
-        </div><!-- End Section Title -->
-  
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-  
-          <div class="mb-5">
-            <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe>
-          </div><!-- End Google Maps -->
-  
-          <div class="row gy-4">
-  
-            <div class="col-md-6">
-              <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
-                <i class="icon bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-  
-            <div class="col-md-6">
-              <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
-                <i class="icon bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-  
-            <div class="col-md-6">
-              <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
-                <i class="icon bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-  
-            <div class="col-md-6">
-              <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
-                <i class="icon bi bi-clock flex-shrink-0"></i>
-                <div>
-                  <h3>Opening Hours<br></h3>
-                  <p><strong>Mon-Sat:</strong> 11AM - 23PM; <strong>Sunday:</strong> Closed</p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-  
-          </div>
-  
-          <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-            <div class="row gy-4">
-  
-              <div class="col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-              </div>
-  
-              <div class="col-md-6 ">
-                <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-              </div>
-  
-              <div class="col-md-12">
-                <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-              </div>
-  
-              <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-              </div>
-  
-              <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-  
-                <button type="submit">Send Message</button>
-              </div>
-  
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+
+  </section><!-- /Gallery Section -->
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Contact</h2>
+      <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="mb-5">
+        <iframe style="width: 100%; height: 400px;"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+          frameborder="0" allowfullscreen=""></iframe>
+      </div><!-- End Google Maps -->
+
+      <div class="row gy-4">
+
+        <div class="col-md-6">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <i class="icon bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h3>Address</h3>
+              <p>A108 Adam Street, New York, NY 535022</p>
             </div>
-          </form><!-- End Contact Form -->
-  
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="col-md-6">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+            <i class="icon bi bi-telephone flex-shrink-0"></i>
+            <div>
+              <h3>Call Us</h3>
+              <p>+1 5589 55488 55</p>
+            </div>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="col-md-6">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+            <i class="icon bi bi-envelope flex-shrink-0"></i>
+            <div>
+              <h3>Email Us</h3>
+              <p>info@example.com</p>
+            </div>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="col-md-6">
+          <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+            <i class="icon bi bi-clock flex-shrink-0"></i>
+            <div>
+              <h3>Opening Hours<br></h3>
+              <p><strong>Mon-Sat:</strong> 11AM - 23PM; <strong>Sunday:</strong> Closed</p>
+            </div>
+          </div>
+        </div><!-- End Info Item -->
+
+      </div>
+
+      <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+          </div>
+
+          <div class="col-md-6 ">
+            <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+          </div>
+
+          <div class="col-md-12">
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+          </div>
+
+          <div class="col-md-12">
+            <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+
+            <button type="submit">Send Message</button>
+          </div>
+
         </div>
-  
-      </section><!-- /Contact Section -->
-  
-    </main>
-  
+      </form><!-- End Contact Form -->
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+</main>
+
 
 
 {% endblock %}
-
-
