@@ -9,6 +9,13 @@ from party.models import Party
 from professional_chef.models import Professional_Chef
 from birthday_table.models import Birthday_table
 from gallery.models import Gallery
+from contactus.models import Contact
+
+
+
+
+
+
 def index(request):
     section = Section.objects.all()
     gallery = Gallery.objects.all()
@@ -133,5 +140,18 @@ def book_table(request):
         return redirect('/#book-a-table')
 
     
+def contactus(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        title = request.POST.get("title")
+        description = request.POST.get("description")
 
-
+        Contact.objects.create(
+            name=name,
+            email=email,
+            title=title,
+            description=description
+        )
+        messages.success(request, "Thank you for contacting us! 🙏 We have received your message and our team will get back to you shortly.")
+        return redirect ("/#contact")

@@ -710,35 +710,67 @@
 
       </div>
 
-      <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-        <div class="row gy-4">
+    <form action="{% url 'contact' %}" method="POST" 
+      style="background:#f8f9fa; padding:40px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);" 
+      data-aos="fade-up" data-aos-delay="200">
+  {% csrf_token %}
+  <div class="row g-4">
 
-          <div class="col-md-6">
-            <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+    <!-- Name -->
+    <div class="col-md-6">
+      <label style="font-weight:600; color:#6c757d; margin-bottom:6px;">Your Name</label>
+      <input type="text" name="name" 
+             style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; box-shadow:0 2px 6px rgba(0,0,0,0.05);" 
+             placeholder="John Doe" required>
+    </div>
+
+    <!-- Email -->
+    <div class="col-md-6">
+      <label style="font-weight:600; color:#6c757d; margin-bottom:6px;">Your Email</label>
+      <input type="email" name="email" 
+             style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; box-shadow:0 2px 6px rgba(0,0,0,0.05);" 
+             placeholder="example@mail.com" required>
+    </div>
+
+    <!-- Subject -->
+    <div class="col-md-12">
+      <label style="font-weight:600; color:#6c757d; margin-bottom:6px;">Subject</label>
+      <input type="text" name="title" 
+             style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; box-shadow:0 2px 6px rgba(0,0,0,0.05);" 
+             placeholder="How can we help you?" required>
+    </div>
+
+    <!-- Message -->
+    <div class="col-md-12">
+      <label style="font-weight:600; color:#6c757d; margin-bottom:6px;">Message</label>
+      <textarea name="description" rows="5" 
+                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; box-shadow:0 2px 6px rgba(0,0,0,0.05); resize:none;" 
+                placeholder="Write your message here..." required></textarea>
+    </div>
+
+    <!-- Django Messages -->
+    <div class="col-md-12">
+      {% if messages %}
+        {% for i in messages %}
+          <div style="margin-top:15px; padding:12px; border-radius:10px; background:#d1e7dd; color:#0f5132; font-weight:500; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+            ✔ {{ i }}
           </div>
+        {% endfor %}
+      {% endif %}
+    </div>
 
-          <div class="col-md-6 ">
-            <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-          </div>
+    <!-- Submit -->
+    <div class="col-md-12 text-center" style="margin-top:20px;">
+      <button type="submit" 
+              style="background:linear-gradient(135deg,#007bff,#00c6ff); color:white; font-weight:600; padding:12px 40px; border:none; border-radius:50px; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:0.3s;">
+        Send Message
+      </button>
+    </div>
 
-          <div class="col-md-12">
-            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-          </div>
+  </div>
+</form>
 
-          <div class="col-md-12">
-            <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-          </div>
 
-          <div class="col-md-12 text-center">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-
-            <button type="submit">Send Message</button>
-          </div>
-
-        </div>
-      </form><!-- End Contact Form -->
 
     </div>
 

@@ -29,9 +29,9 @@ urlpatterns = [
     path('logout',views.logout_user,name='logout'),
     path('register',views.register,name='register'),
 
-     path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
 
-
+    path('contact/',views.contactus,name='contact'),
 
 ]
 

@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     # Optional -- requires install using `django-allauth[socialaccount]`.
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'gallery'
+    'gallery',
+    'contactus'
 ]
 
 MIDDLEWARE = [
